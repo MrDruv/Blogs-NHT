@@ -1,0 +1,22 @@
+{{ partial "user-header.html" . }}
+
+<main style="padding: 2rem;">
+  <section style="text-align: center; margin-bottom: 2rem;">
+    <h2>{{ .Title }}'s Blogs</h2>
+  </section>
+
+  <section style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+    {{ range where .Site.Pages "Type" "post" }}
+      {{ if eq .Params.author .Title }}
+        <div style="width: 280px; background-color: #2a2a2a; padding: 1rem; border-radius: 12px;">
+          <a href="{{ .Permalink }}" style="text-decoration: none; color: inherit;">
+            <h3>{{ .Title }}</h3>
+            <p style="font-size: 0.85rem; color: #ccc;">{{ .Date.Format "Jan 2, 2006" }}</p>
+            <p style="font-size: 0.9rem; color: #aaa;">{{ .Summary }}</p>
+          </a>
+        </div>
+      {{ end }}
+    {{ end }}
+  </section>
+</main>
+

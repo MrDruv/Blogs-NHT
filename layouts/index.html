@@ -1,0 +1,34 @@
+<section style="text-align: center; margin-top: 2rem;">
+  <h1 style="font-size: 2.5rem; color: #ffffff; font-weight: 700; margin-bottom: 1.5rem;">
+    NIGHTHACK Blogs
+  </h1>
+</section>
+
+<section class="user-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; padding: 2rem;">
+  {{ range where .Site.Pages "Type" "user" }}
+    <div class="user-card" style="width: 180px; background-color: #1e1e1e; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.3); transition: transform 0.2s;">
+      <a href="{{ .Permalink }}" style="text-decoration: none; color: inherit;">
+        <img src="{{ .Params.avatar }}" alt="{{ .Title }}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem;" />
+        <h3 style="margin: 0.5rem 0;">{{ .Title }}</h3>
+        <p style="font-size: 0.85rem; color: #aaa;">{{ .Params.discord }}</p>
+      </a>
+    </div>
+  {{ end }}
+</section>
+
+<style>
+body {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .user-grid {
+    padding: 2rem;
+  }
+  .user-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+</style>
+
