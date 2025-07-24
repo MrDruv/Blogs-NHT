@@ -1,3 +1,5 @@
+[functions]
+  directory = "netlify/functions"
 [build]
 publish = "public"
 command = "hugo --gc --minify -b ${DEPLOY_PRIME_URL}"

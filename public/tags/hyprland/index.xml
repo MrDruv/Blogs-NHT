@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyprland on johndoe</title>
+    <link>http://localhost:1313/tags/hyprland/</link>
+    <description>Recent content in Hyprland on johndoe</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 24 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hyprland/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modular Linux: Where Hyprland Meets NixOS</title>
+      <link>http://localhost:1313/users/druva/blogs/first/</link>
+      <pubDate>Thu, 24 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/users/druva/blogs/first/</guid>
+      <description>&lt;p&gt;Welcome to the NightHack series on modular Linux workflows&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

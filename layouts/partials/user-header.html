@@ -1,11 +1,11 @@
 <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background-color: #1e1e1e; border-bottom: 1px solid #333;">
   <div style="display: flex; align-items: center; gap: 0.8rem;">
     <img src="{{ .Params.avatar }}" alt="Avatar" style="height: 40px; width: 40px; border-radius: 50%;" />
-    <h2 style="margin: 0; font-size: 1.5rem;">{{ .Title }}</h2>
+    <h2 style="margin: 0; font-size: 1.5rem; color:grey">{{ .Title }}</h2>
   </div>
   <div style="display: flex; gap: 2rem;">
-    <a href="/users/{{ .File.Dir }}/about/" style="color: #ccc;">About</a>
-    <a href="/users/{{ .File.Dir }}/projects/" style="color: #ccc;">Projects</a>
-    <a href="/users/{{ .File.Dir }}/contact/" style="color: #ccc;">Contact Me</a>
+    <a href="/users/{{ .Title | urlize }}/about/" style="color: #ccc;">About</a>
+    <a href="/users/{{ .Title | urlize }}/project/" style="color: #ccc;">Projects</a>
+    <a href="/users/{{ .Title | urlize }}/contact/" style="color: #ccc;">Contact Me</a>
   </div>
 </nav>

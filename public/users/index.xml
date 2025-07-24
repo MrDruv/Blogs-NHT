@@ -9,17 +9,17 @@
     <lastBuildDate>Thu, 24 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/users/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Druva&#39;S blogs</title>
-      <link>http://localhost:1313/users/druva/</link>
+      <title>Druva S</title>
+      <link>http://localhost:1313/users/druva-s/</link>
       <pubDate>Thu, 24 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/users/druva/</guid>
+      <guid>http://localhost:1313/users/druva-s/</guid>
       <description></description>
     </item>
     <item>
       <title>ravish0007_nh</title>
-      <link>http://localhost:1313/users/ravish/</link>
+      <link>http://localhost:1313/users/ravish0007_nh/</link>
       <pubDate>Thu, 24 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/users/ravish/</guid>
+      <guid>http://localhost:1313/users/ravish0007_nh/</guid>
       <description></description>
     </item>
   </channel>
