@@ -1,36 +1,56 @@
-const nacl = require("tweetnacl");
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 
-exports.handler = async (event) => {
-  const PUBLIC_KEY = "d9c374c998a5cfdb69a8cf7cb596c006a9510e050bc253467d86b2d4f3624718"; // insert yours here
+exports.handler = async (event, context) => {
+  const code = event.queryStringParameters.code;
+  const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
+  const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
+  const REDIRECT_URI = "https://nighthack.in/.netlify/functions/auth-discord";
 
-  const signature = event.headers["x-signature-ed25519"];
-  const timestamp = event.headers["x-signature-timestamp"];
-  const body = event.body;
+  // Exchange code for token
+  const tokenRes = await axios.post("https://discord.com/api/oauth2/token", new URLSearchParams({
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    grant_type: "authorization_code",
+    code: code,
+    redirect_uri: REDIRECT_URI
+  }), {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" }
+  });
 
-  const isVerified = nacl.sign.detached.verify(
-    Buffer.from(timestamp + body),
-    Buffer.from(signature, "hex"),
-    Buffer.from(PUBLIC_KEY, "hex")
-  );
+  const accessToken = tokenRes.data.access_token;
 
-  if (!isVerified) {
-    return {
-      statusCode: 401,
-      body: "Invalid request signature",
-    };
-  }
+  // Fetch user info
+  const userRes = await axios.get("https://discord.com/api/users/@me", {
+    headers: { Authorization: `Bearer ${accessToken}` }
+  });
 
-  const json = JSON.parse(body);
-  if (json.type === 1) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ type: 1 }),
-    };
-  }
+  const user = userRes.data;
+
+  // Write Hugo-compatible markdown
+  const mdDir = path.join(__dirname, "../../content/users", user.id);
+  fs.mkdirSync(mdDir, { recursive: true });
+
+  const md = `---
+title: "${user.username}"
+avatar: "https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png"
+discord: "${user.username}#0000"
+layout: "user"
+joined: "${new Date().toISOString().slice(0, 10)}"
+---
+
+Welcome to NightHack blog!
+`;
+
+  fs.writeFileSync(path.join(mdDir, "index.md"), md);
 
   return {
-    statusCode: 400,
-    body: "Unhandled interaction type",
+    statusCode: 302,
+    headers: {
+      Location: `/users/${user.id}/`
+    },
+    body: ""
   };
 };
 
