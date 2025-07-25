@@ -158,7 +158,7 @@ url = "https://gitlab.com/"
 name = "LinkedIn"
 icon = "fa-brands fa-linkedin fa-2x"
 weight = 4
-url = "https://www.linkedin.com/company/nighthack-labs/
+url = "https://www.linkedin.com/company/nighthack-labs/"
 
 [[params.social]]
 name = "RSS"
